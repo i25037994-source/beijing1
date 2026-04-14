@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Beijing</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Project Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 确保满屏并且无滚动条 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 复用现有的英雄(hero)区域样式，保证风格统一 */
+        .welcome-container {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- 使用项目中已有的 hero 样式类进行复用满屏背景居中和加深遮罩层 -->
+    <div class="welcome-container hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to Beijing</h1>
+            <p>Discover the Imperial Grandeur and Rich Culture</p>
+            <br>
+            <!-- 跳转到主页的按钮 -->
+            <a href="index.html" class="btn-primary">Enter Website</a>
+        </div>
+    </div>
+</body>
+</html>

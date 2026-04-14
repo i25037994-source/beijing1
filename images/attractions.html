@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beijing Attractions - Discover the Wonders</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .page-header {
+            height: 60vh;
+            background-image: url('./images/a1.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .page-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(166, 25, 46, 0.5));
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 10;
+            color: var(--text-light);
+            animation: fadeIn 1.5s ease;
+        }
+
+        .page-header-content h1 {
+            font-size: 3.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .page-header-content p {
+            font-size: 1.3rem;
+            font-family: var(--font-heading);
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Attractions layout */
+        .attraction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            margin-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .attraction-item {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .attraction-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .attraction-img {
+            flex: 1.2;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .attraction-img img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .attraction-img:hover img {
+            transform: scale(1.1);
+        }
+
+        .attraction-info {
+            flex: 1;
+        }
+
+        .attraction-info h3 {
+            font-size: 2.2rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .attraction-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .attraction-info:hover h3::after {
+            width: 100%;
+        }
+
+        .attraction-info p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .info-tags {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .info-tags span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--primary-red-dark);
+            background-color: rgba(212, 175, 55, 0.15);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .info-tags i {
+            color: var(--accent-gold);
+        }
+
+        .visit-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: var(--primary-red);
+            border: 2px solid var(--primary-red);
+            border-radius: 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: var(--transition-fast);
+        }
+
+        .visit-btn:hover {
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            box-shadow: 0 5px 15px rgba(166, 25, 46, 0.3);
+        }
+
+        @media (max-width: 991px) {
+            .attraction-item {
+                gap: 30px;
+            }
+
+            .attraction-img img {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .attraction-item,
+            .attraction-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .attraction-img {
+                width: 100%;
+            }
+
+            .attraction-img img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="sticky">
+        <div class="nav-container">
+            <a href="index.html#home" class="logo"><img src="images/logo.png" alt="Beijing Logo"
+                    class="nav-logo">Beijing</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#stats">Statistics</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Explore <i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="attractions.html">Attractions</a>
+                        <a href="index.html#culture">Culture</a>
+                        <a href="cuisine.html">Cuisine</a>
+                    </div>
+                </li>
+                <li><a href="index.html#tips">Travel Tips</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-overlay"></div>
+        <div class="page-header-content">
+            <h1>Majestic Landmarks</h1>
+            <p>Walk through the corridors of imperial history</p>
+        </div>
+    </header>
+
+    <!-- Attractions Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Must-Visit Destinations</h2>
+            <p
+                style="text-align: center; max-width: 800px; margin: 0 auto; margin-bottom: 60px; color: var(--text-muted); font-size: 1.15rem;">
+                Beijing is home to some of the world's most magnificent and historically significant architectural
+                wonders. Embark on a journey to witness the grand legacy of ancient dynasties.
+            </p>
+
+            <div class="attraction-list">
+                <!-- Attraction 1 -->
+                <div class="attraction-item">
+                    <div class="attraction-img">
+                        <img src="./images/2.jpg" alt="The Forbidden City">
+                    </div>
+                    <div class="attraction-info">
+                        <h3>The Forbidden City</h3>
+                        <div class="info-tags">
+                            <span><i class="fa-solid fa-crown"></i> Imperial Palace</span>
+                            <span><i class="fa-solid fa-monument"></i> UNESCO Site</span>
+                        </div>
+                        <p>Located at the exact center of the ancient city of Beijing, it was the imperial palace during
+                            the Ming and Qing dynasties. With over 9,000 rooms, it is the largest and best-preserved
+                            wooden palatial structure in the world, embodying the supreme authority and strict hierarchy
+                            of absolute monarchy.</p>
+                        <a href="#" class="visit-btn">Plan Visit</a>
+                    </div>
+                </div>
+
+                <!-- Attraction 2 -->
+                <div class="attraction-item">
+                    <div class="attraction-img">
+                        <img src="./images/3.jpg" alt="The Great Wall">
+                    </div>
+                    <div class="attraction-info">
+                        <h3>The Great Wall (Badaling)</h3>
+                        <div class="info-tags">
+                            <span><i class="fa-solid fa-mountain-sun"></i> Mountain View</span>
+                            <span><i class="fa-solid fa-gem"></i> World Wonder</span>
+                        </div>
+                        <p>No trip to Beijing is complete without visiting this awe-inspiring monumental feat of ancient
+                            engineering. Sweeping across misty mountain ridges, the Great Wall served as China's
+                            ultimate defense system. The Badaling and Mutianyu sections are the most renowned for their
+                            majestic vistas.</p>
+                        <a href="#" class="visit-btn">Plan Visit</a>
+                    </div>
+                </div>
+
+                <!-- Attraction 3 -->
+                <div class="attraction-item">
+                    <div class="attraction-img">
+                        <img src="./images/4.jpg" alt="Temple of Heaven">
+                    </div>
+                    <div class="attraction-info">
+                        <h3>Temple of Heaven</h3>
+                        <div class="info-tags">
+                            <span><i class="fa-solid fa-yin-yang"></i> Spiritual</span>
+                            <span><i class="fa-solid fa-tree"></i> Royal Garden</span>
+                        </div>
+                        <p>An exquisite complex of religious buildings situated in the southeastern part of central
+                            Beijing. Emperors of the Ming and Qing dynasties visited the complex annually, holding
+                            ceremonies to pray for good harvests. The park is now a gathering place for locals
+                            practicing Tai Chi and traditional arts.</p>
+                        <a href="#" class="visit-btn">Plan Visit</a>
+                    </div>
+                </div>
+
+                <!-- Attraction 4 -->
+                <div class="attraction-item">
+                    <div class="attraction-img">
+                        <img src="./images/7.jpg" alt="Summer Palace">
+                    </div>
+                    <div class="attraction-info">
+                        <h3>The Summer Palace</h3>
+                        <div class="info-tags">
+                            <span><i class="fa-solid fa-water"></i> Lake View</span>
+                            <span><i class="fa-solid fa-leaf"></i> Classical Garden</span>
+                        </div>
+                        <p>A masterpiece of Chinese landscape garden design. The natural landscape of hills and open
+                            water is combined with artificial features such as pavilions, halls, palaces, temples, and
+                            bridges to form a harmonious ensemble of outstanding aesthetic value.</p>
+                        <a href="#" class="visit-btn">Plan Visit</a>
+                    </div>
+                </div>
+
+                <!-- Attraction 5 -->
+                <div class="attraction-item">
+                    <div class="attraction-img">
+                        <img src="./images/8.jpg" alt="Beihai Park">
+                    </div>
+                    <div class="attraction-info">
+                        <h3>Beihai Park</h3>
+                        <div class="info-tags">
+                            <span><i class="fa-solid fa-sailboat"></i> Boating</span>
+                            <span><i class="fa-solid fa-vihara"></i> White Stupa</span>
+                        </div>
+                        <p>One of the oldest, largest, and best-preserved ancient imperial gardens in China. Dominated
+                            by the iconic White Stupa standing tall on Jade Island, Beihai Park offers a tranquil
+                            retreat from the bustling city, preserving the romantic spirit of imperial gardens.</p>
+                        <a href="#" class="visit-btn">Plan Visit</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Beijing Tourism</h3>
+                <p>Explore the wonders of China's ancient capital.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Dongcheng District, Beijing, China</p>
+                <p><i class="fa-solid fa-phone"></i> +86 10 1234 5678</p>
+                <p><i class="fa-solid fa-envelope"></i> info@visitbeijing.example</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Beijing Cultural Tourism. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#navbar" class="back-to-top" id="backToTop">
+        <i class="fa-solid fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Back to Top visibility
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Smooth Scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

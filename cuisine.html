@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beijing Cuisine - Taste the Imperial Capital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .page-header {
+            height: 60vh;
+            background-image: url('./images/f1.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .page-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(166, 25, 46, 0.4));
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 10;
+            color: var(--text-light);
+            animation: fadeIn 1.5s ease;
+        }
+
+        .page-header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-header-content p {
+            font-size: 1.2rem;
+            font-family: var(--font-heading);
+        }
+
+        /* Cuisine detail cards specific layout */
+        .cuisine-list {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .cuisine-item {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-slow);
+        }
+
+        .cuisine-item:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .cuisine-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .cuisine-img {
+            flex: 1;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .cuisine-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .cuisine-item:hover .cuisine-img img {
+            transform: scale(1.08);
+        }
+
+        .cuisine-info {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .cuisine-info h3 {
+            font-size: 2rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+
+        .cuisine-info p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .cuisine-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cuisine-tag {
+            background-color: var(--bg-light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-red);
+            font-weight: bold;
+            border: 1px solid rgba(166, 25, 46, 0.2);
+        }
+
+        @media (max-width: 768px) {
+
+            .cuisine-item,
+            .cuisine-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .cuisine-img {
+                height: 250px;
+                width: 100%;
+            }
+
+            .cuisine-info {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="sticky">
+        <div class="nav-container">
+            <a href="index.html#home" class="logo"><img src="images/logo.png" alt="Beijing Logo"
+                    class="nav-logo">Beijing</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#stats">Statistics</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Explore <i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="attractions.html">Attractions</a>
+                        <a href="index.html#culture">Culture</a>
+                        <a href="cuisine.html">Cuisine</a>
+                    </div>
+                </li>
+                <li><a href="index.html#tips">Travel Tips</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-overlay"></div>
+        <div class="page-header-content">
+            <h1>Culinary Delights</h1>
+            <p>Experience the authentic flavors of Beijing</p>
+        </div>
+    </header>
+
+    <!-- Cuisine Introduction Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">The Royal Feasts & Street Foods</h2>
+            <p
+                style="text-align: center; max-width: 800px; margin: 0 auto; margin-bottom: 50px; color: var(--text-muted); font-size: 1.1rem;">
+                Beijing's cuisine, known as "Jingmai", is heavily influenced by the culinary traditions of other
+                provinces, as well as the sumptuous cooking styles of the imperial court. From roasted duck to sweet
+                street snacks, the city is a paradise for food lovers.
+            </p>
+
+            <div class="cuisine-list">
+                <!-- Item 1 -->
+                <div class="cuisine-item">
+                    <div class="cuisine-img">
+                        <img src="./images/f1.jpg" alt="Peking Roast Duck">
+                    </div>
+                    <div class="cuisine-info">
+                        <h3>Peking Roast Duck</h3>
+                        <div class="cuisine-tags">
+                            <span class="cuisine-tag">Signature Dish</span>
+                            <span class="cuisine-tag">Imperial Origin</span>
+                        </div>
+                        <p>The undisputed crown jewel of Beijing cuisine. Characterized by its thin, crisp skin, the
+                            meat is traditionally sliced in front of diners and served with spring pancakes, sweet bean
+                            sauce, and julienned scallions or cucumber.</p>
+                        <a href="#" class="read-more">Find Top Restaurants <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="cuisine-item">
+                    <div class="cuisine-img">
+                        <img src="./images/f2.jpg" alt="Zha Jiang Mian">
+                    </div>
+                    <div class="cuisine-info">
+                        <h3>Zha Jiang Mian (Fried Sauce Noodles)</h3>
+                        <div class="cuisine-tags">
+                            <span class="cuisine-tag">Local Comfort Food</span>
+                            <span class="cuisine-tag">Noodles</span>
+                        </div>
+                        <p>A true staple of old Beijing households. It features thick, handmade wheat noodles topped
+                            with a rich, savory soybean paste fried with diced pork, accompanied by a colorful array of
+                            fresh shredded vegetables.</p>
+                        <a href="#" class="read-more">Local Recipe <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="cuisine-item">
+                    <div class="cuisine-img">
+                        <img src="./images/f3.jpg" alt="Instant-Boiled Mutton">
+                    </div>
+                    <div class="cuisine-info">
+                        <h3>Instant-Boiled Mutton (Copper Pot)</h3>
+                        <div class="cuisine-tags">
+                            <span class="cuisine-tag">Winter Favorite</span>
+                            <span class="cuisine-tag">Traditional Style</span>
+                        </div>
+                        <p>Dating back to the Qing Dynasty, this hot pot style uses a traditional copper pot with
+                            burning charcoal. Diners dip paper-thin slices of high-quality mutton into a clear broth
+                            before coating them in a classic sesame paste dipping sauce.</p>
+                        <a href="#" class="read-more">How to Eat It <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="cuisine-item">
+                    <div class="cuisine-img">
+                        <img src="./images/f4.jpg" alt="Lvdagun">
+                    </div>
+                    <div class="cuisine-info">
+                        <h3>Lvdagun (Rolling Donkey)</h3>
+                        <div class="cuisine-tags">
+                            <span class="cuisine-tag">Sweet Snack</span>
+                            <span class="cuisine-tag">Intangible Heritage</span>
+                        </div>
+                        <p>A classic Beijing pastry made from glutinous rice flour filled with red bean paste, and
+                            rolled in roasted soybean flour. The name comes from its dusty appearance, resembling a
+                            donkey rolling in the yellow dust of northern China.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="cuisine-item">
+                    <div class="cuisine-img">
+                        <img src="./images/f5.jpg" alt="Tanghulu">
+                    </div>
+                    <div class="cuisine-info">
+                        <h3>Bingtanghulu (Candied Haw)</h3>
+                        <div class="cuisine-tags">
+                            <span class="cuisine-tag">Street Food</span>
+                            <span class="cuisine-tag">Winter Treat</span>
+                        </div>
+                        <p>The nostalgic taste of Beijing winters. Fresh Chinese hawthorn fruit is skewered on a bamboo
+                            stick and generously coated in hardened sugar syrup. The resulting treat is perfectly
+                            crunchy on the outside, and delightfully sweet and sour inside.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="cuisine-item">
+                    <div class="cuisine-img">
+                        <img src="./images/f6.jpg" alt="Baodu">
+                    </div>
+                    <div class="cuisine-info">
+                        <h3>Baodu (Quick-fried Tripe)</h3>
+                        <div class="cuisine-tags">
+                            <span class="cuisine-tag">Hui Muslim Origin</span>
+                            <span class="cuisine-tag">Acquired Taste</span>
+                        </div>
+                        <p>A traditional Halal street snack where fresh beef or lamb tripe is blanched in boiling water
+                            for exactly a few seconds to retain its crunchy texture. It is eaten dipped in a savory
+                            paste made of sesame, soy sauce, and chili oil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Beijing Tourism</h3>
+                <p>Explore the wonders of China's ancient capital.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Dongcheng District, Beijing, China</p>
+                <p><i class="fa-solid fa-phone"></i> +86 10 1234 5678</p>
+                <p><i class="fa-solid fa-envelope"></i> info@visitbeijing.example</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Beijing Cultural Tourism. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#navbar" class="back-to-top" id="backToTop">
+        <i class="fa-solid fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Back to Top visibility
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Smooth Scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
